@@ -11,13 +11,21 @@ export const darkTheme = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    background: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
+   
+  html, body, #root {
+    height: 100%;
+    width: 100%;
     margin: 0;
-    font-family: sans-serif;
+    padding: 0;
+    background-color: ${({ theme }) => theme.background};
+    overflow-x: hidden;  
   }
- 
+
+  body {
+    color: ${({ theme }) => theme.text};
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
   .app {
     padding: 1rem;
   }
@@ -33,8 +41,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background: #f9f9f9;
+    background: ${({ theme }) =>
+      theme.background === "#ffffff" ? "#f9f9f9" : "#222"};
     text-align: center;
+    color: ${({ theme }) => theme.text};
   }
 
   .movie-card img {
@@ -50,14 +60,19 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 1000;
   }
 
   .details-panel {
-    background: white;
+    background: ${({ theme }) =>
+      theme.background === "#ffffff" ? "#fff" : "#333"};
+    color: ${({ theme }) => theme.text};
     padding: 2rem;
     border-radius: 8px;
     max-width: 500px;
-    width: 100%;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
   }
 
@@ -69,5 +84,6 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+    color: ${({ theme }) => theme.text};
   }
 `;

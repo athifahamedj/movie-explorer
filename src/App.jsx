@@ -6,21 +6,30 @@ import MovieDetails from './components/MovieDetails';
 import ThemeToggle from './components/ThemeToggle';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, lightTheme, darkTheme } from './theme';
-
 const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;  
-  align-items: center;     
-  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  max-width: 900px;     
+  margin: 0 auto;        
+  width: 100%;
 `;
 
 const ThemeWrapper = styled.div`
   position: absolute;
   top: 1rem;
   right: 1rem;
+  @media (max-width: 600px) {
+    position: static;
+    margin-bottom: 1rem;
+    align-self: flex-end;  
+  }
 `;
+
 
 function App() {
   const [query, setQuery] = React.useState('');
@@ -36,9 +45,7 @@ function App() {
     if (!q) return;
     const res = await fetch(`https://www.omdbapi.com/?apikey=844eeec0&s=${q}`);
     const data = await res.json();
-    if (data.Search) {
-      setMovies(data.Search);
-    }
+    if (data.Search) setMovies(data.Search);
   };
 
   return (
