@@ -10,7 +10,9 @@ To run the project,
 
 
 Short design notes:
-used local storage for dark/light theme approach
-used Jest for testing approach
-API has 1000 links limitation
+1)used local storage for dark/light theme approach
+2)used Jest for testing approach
+3)API has 1000 links limitation
+
+
  
